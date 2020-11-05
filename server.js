@@ -8,7 +8,9 @@ app.use(express.static('public'));
 
 // Routing
 app.get("/", function(req, res) {
+
   res.sendFile(`${__dirname}/views/index.html`);
+
 });
 
 app.get("/api/easteregg", function(req, res) {
@@ -52,8 +54,11 @@ app.get("/api/timestamp/:dateParam", function(req, res) {
 
 });
 
+// No matching route
 app.use(function(req, res, next) {
-  res.sendFile(`${__dirname}/views/404.html`);
+
+  res.status(404).sendFile(`${__dirname}/views/404.html`);
+
 });
 
 // Listening for requests
